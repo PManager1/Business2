@@ -4,8 +4,8 @@ import { API, graphqlOperation } from 'aws-amplify'
 import { onCreateRecord, onUpdateRecord, onDeletePost } from '../graphql/subscriptions'
 import DeletePost from './DeletePost'
 import EditPost from './EditPost'
-import CreateCommentPost from './CreateCommentPost'
 import CommentPost from './CommentPost'
+// import CreateCommentPost from './CreateCommentPost'
 
 
 export default class DisplayPosts extends Component{
@@ -78,7 +78,7 @@ export default class DisplayPosts extends Component{
         return posts.map((post)  =>{
             return (
                 <div className="posts" style={rowStyle} key={post.id}> 
-                    <h1 > {post.postTitle} </h1>
+                    <h1 > {post.companyName} </h1>
                     <span style={{ fontStyle: "italic", color: "#0ca5e297"  }}> 
                          wrote by:  {post.postOwnerUsername}
                          <time style={{ fontStyle: "italic" }}> on: { new Date(post.createdAt).toDateString()  }  </time>

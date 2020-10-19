@@ -21,8 +21,6 @@ class CreatePost extends Component {
                       // postOwnerUsername: user.username
 
                 })
-
-
                 // console.log("Curr: User: ", user.username);
                  //console.log("Attr.Sub: User: ", user.attributes.sub);
                  
@@ -71,7 +69,7 @@ class CreatePost extends Component {
                   rows="3"
                   cols="40"
                   required
-                  placeholder="New Blog Post"
+                  placeholder="New Blog Post-3"
                   value={this.state.postBody}
                   onChange={this.handleChangePost}
                   />
@@ -79,8 +77,6 @@ class CreatePost extends Component {
                 <input  type="submit"
                   className="btn"
                   style={{ fontSize: '19px'}}/>
-
-
             </form>
         )
     }
