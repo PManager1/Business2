@@ -6,10 +6,13 @@ import { createRecord } from '../graphql/mutations'
 class CreatePost extends Component {
 
     state = {
-        postOwnerId: "1",
-        postOwnerUsername: "Jay",
-        postTitle: "",
-        postBody: ""
+        // postOwnerId: "1",
+        // postOwnerUsername: "Jay",
+        // postTitle: "",
+        // postBody: "", 
+        companyName: "",   //title
+        executiveFirstName: "",  // blog body
+
     }
 
     componentDidMount = async () => {
@@ -36,40 +39,40 @@ class CreatePost extends Component {
          event.preventDefault()
 
          const input = {
-              postOwnerId: this.state.postOwnerId,
-              postOwnerUsername: this.state.postOwnerUsername,
-              postTitle: this.state.postTitle,
-              postBody: this.state.postBody,
-              createdAt: new Date().toISOString()
+              // postOwnerId: this.state.postOwnerId,
+              // postOwnerUsername: this.state.postOwnerUsername,
+              companyName: this.state.companyName,
+              executiveFirstName: this.state.executiveFirstName,
+              createdAt: new Date().toISOString() 
          }
 
          await API.graphql(graphqlOperation(createRecord, { input }))
 
-         this.setState({ postTitle: "", postBody: ""})
+         this.setState({ companyName: "", executiveFirstName: ""})
 
     }
 
-
+    
     render() {
         return (
             <form className="add-post" 
             onSubmit={this.handleAddPost} >
 
                 <input style={{ font: '19px'}} 
-                  type="text" placeholder="Title"
-                  name="postTitle"
+                  type="text" placeholder="companyName"
+                  name="companyName"
                   required
-                  value={this.state.postTitle}
+                  value={this.state.companyName}
                   onChange={this.handleChangePost}
                   />
 
                 <textarea 
                   type="text"
-                  name="postBody"
+                  name="executiveFirstName"
                   rows="3"
                   cols="40"
                   required
-                  placeholder="New Blog Post-3"
+                  placeholder="executiveFirstName"
                   value={this.state.postBody}
                   onChange={this.handleChangePost}
                   />
