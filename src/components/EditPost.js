@@ -8,18 +8,24 @@ class EditPost extends Component {
     state = {
         show: false,
         id: "",
-        postOwnerId: "",
-        postOwnerUsername: "",
-        postTitle: "",
-        postBody: "",
+     //    postOwnerId: "",
+     //    postOwnerUsername: "",
+        companyName: "",
+        executiveFirstName: "",
         postData: {
-             postTitle: this.props.postTitle,
-             postBody: this.props.postBody
+             companyName: this.props.companyName,
+             executiveFirstName: this.props.executiveFirstName
         }
 
     }
 
+    
+
+    
+
     handleModal = () => {
+         console.log('23- Edit post -- this.props =', this.props); 
+
          this.setState({ show: !this.state.show})
          document.body.scrollTop = 0
          document.documentElement.scrollTop = 0
@@ -30,13 +36,14 @@ class EditPost extends Component {
 
          const input = {
               id: this.props.id,
-              postOwnerId: this.state.postOwnerId,
-              postOwnerUsername: this.state.postOwnerUsername,
-              postTitle: this.state.postData.postTitle,
-              postBody: this.state.postData.postBody
+          //     postOwnerId: this.state.postOwnerId,
+          //     postOwnerUsername: this.state.postOwnerUsername,
+              companyName: this.state.postData.companyName,
+              executiveFirstName: this.state.postData.executiveFirstName
 
          }
 
+         console.log('46--- input = ', input );
          await API.graphql(graphqlOperation(updateRecord, { input }))
 
          //force close the modal 
@@ -45,14 +52,16 @@ class EditPost extends Component {
     }
      
     handleTitle = event => {
+          console.log('54- this.state= ', this.state );
          this.setState({
-             postData: {...this.state.postData, postTitle: event.target.value}
+             postData: {...this.state.postData, companyName: event.target.value}
               
+             
          })
     }
     handleBody = event => {
          this.setState({ postData: {...this.state.postData,
-          postBody: event.target.value}})
+          executiveFirstName: event.target.value}})
     }
     componentWillMount = async () => {
 
@@ -63,6 +72,8 @@ class EditPost extends Component {
         //              postOwnerUsername: user.username 
         //          })
         //     })
+
+        console.log(' 73- componentWillMount '); 
     }
 
     render() {
@@ -81,20 +92,19 @@ class EditPost extends Component {
 
                              <input style={{fontSize: "19px"}}
                                   type="text" placeholder="Title"
-                                  name="postTitle"
-                                  value={this.state.postData.postTitle}
+                                  name="companyName"
+                                  value={this.state.postData.companyName}
                                   onChange={this.handleTitle} />
 
                              <input 
                                 style={{height: "150px", fontSize: "19px"}}
                                 type="text"
-                                name="postBody"
-                                value={this.state.postData.postBody}
+                                name="executiveFirstName"
+                                value={this.state.postData.executiveFirstName}
                                 onChange={this.handleBody}
                                 />
 
                              <button>Update Post</button>
-
 
                       </form>
 
@@ -102,9 +112,7 @@ class EditPost extends Component {
                  </div>
              )
              }
-
-
-                    
+   
                 <button onClick={this.handleModal}>Edit</button>
              </>
 
