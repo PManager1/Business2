@@ -1,0 +1,34 @@
+type Record @model{ 
+   id: ID!
+   companyName: String
+   business_size: String
+   createdAt: String
+   lastUpdated: String
+   executiveFirstName: String
+   executiveLastName: String
+   contactPerson: String
+   followupDate: String
+   comment: String
+   email: String
+   priorities: String
+   status: String
+   phone_no: String
+   cell_phone: String
+   address: String
+   city: String
+   state: String
+   last_date_call_was_made:String
+   no_of_calls_made: Int
+   ownerStatus: String
+   OwnerId: String
+   OwnerUsername: String
+   base: String
+}
+
+
+
+
+
+
+
+ 
